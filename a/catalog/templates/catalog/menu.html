@@ -1,0 +1,57 @@
+{% load static %}
+<style>
+/* CSS */
+.nav-menu {
+    color: black;
+}
+</style>
+<style>
+    /* CSS для центрирования элемента */
+    #centeredElement {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #3498db;
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        user-select: none; /* Запрещаем выделение текста */
+    }
+</style>
+
+<div id="centeredElement">Кликни меня!</div>
+
+<script>
+    // JavaScript для изменения размера и цвета при клике
+    var centeredElement = document.getElementById('centeredElement');
+
+    centeredElement.addEventListener('click', function() {
+        // Генерируем случайные значения для нового размера и цвета
+        var newSize = Math.floor(Math.random() * 200) + 100; // новый размер в пределах от 100 до 300
+        var newColor = '#' + Math.floor(Math.random()*16777215).toString(16); // новый случайный цвет
+
+        // Применяем новый размер и цвет к элементу
+        centeredElement.style.width = newSize + 'px';
+        centeredElement.style.height = newSize + 'px';
+        centeredElement.style.backgroundColor = newColor;
+    });
+</script>
+
+<div class="container">
+    <div class="row">
+        <div><br>
+            <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="Logo" width="111"></a>
+            <nav><br>
+                    <big>
+                        <div class="dropdown">
+                            <!--<li><a href="{% url 'index' %}" {% if request.resolver_match.url_name != 'index' and request.resolver_match.url_name != 'rubric_detail' and request.resolver_match.url_name != 'company_detail' %}class="nav-menu"{% endif %}>Компании</a></li>
+                            <li class="spacer"></li>-->
+                        </div>
+                    </big>
+            </nav>
+        </div>
+    </div>
+</div>

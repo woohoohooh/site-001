@@ -1,0 +1,57 @@
+
+{% load static %}
+{% block content %}
+нужно написать отзыв<br>
+ОСНОВНЫЕ ТРЕБОВАНИЯ<br>
+A. о компании {{ company.org_name1 }}<br>
+B. которая занимается:<br>
+---<br>
+{% if company.rubrics %}
+        {% for tag in company.rubrics.all %}
+                {{ tag }},
+        {% endfor %}<br>
+{% endif %}
+---<br>
+ДОПОЛНИТЕЛЬНЫЕ ПОЖЕЛАНИЯ<br>
+1. слегка отрицательный отзыв<br>
+2. от имени бывшего клиента<br>
+3. в тексте отзыва напиши название компании только 1 раз<br>
+4. текст отзыва более 1000 символов, можно до 2000<br>
+5. пиши только сам текст отзыва без лишнего<br>
+6. пиши простым языком, чтобы на вид было как человек написал на быструю руку, но без ошибок<br>
+
+    <h3>Оставить отзыв</h3><br>
+    <form method="post" action="{% url 'add_comment' company.id %}">
+        {% csrf_token %}
+        <input type="hidden" name="company_id" value="{{ company.id }}">
+
+        <div class="form-group">
+            <label for="na">Имя</label>
+            <input type="text" class="form-control" id="na" name="na">
+        </div>
+        <div class="form-group">
+            <label for="re">Отзыв</label>
+            <textarea class="form-control" id="re" name="re" required></textarea>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="negative" name="feedback_type" value="negative" required checked>
+            <label class="form-check-label" for="negative">Не рекомендую</label>
+        </div>
+
+    <!-- Невидимое поле для ботов -->
+    <div style="display:none;">
+        <label for="fake_field">Не заполнять</label>
+        <input type="text" id="fake_field" name="name">
+    </div>
+
+        <br>
+        <button type="submit" class="btn btn-outline-secondary">Отправить</button>
+    </form>
+
+            </div>
+        </div>
+<form method="post" action="{% url 'toggle_visibility' pk=company.pk %}">
+    {% csrf_token %}
+    <button type="submit">Отобразить компанию</button>
+</form>
+{% endblock %}

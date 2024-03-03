@@ -1,0 +1,134 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block title %}{{ company.org_name1 }}, {{ company.org_name2 }} — Отзывы, Информация, Контакты{% endblock %}
+{% block content %}
+
+<div class="container"><br><br>
+    <div style="text-align: left;">
+    <a class="icon-link" href="{% url 'index' %}">&larr; Каталог компаний</a>
+</div>
+<div style="text-align: right;">
+<!--    <a style="color: red;" class="icon-link" href="{% url 'test' %}">Редактировать</a>-->
+</div>
+
+    <h1 class="p-4 mb-3 bg-body-tertiary rounded">{{ company.org_name1 }}</h1> <span class="btn btn-light btn-sm mb-1">4472 просмотров</span><br>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="main-content">
+
+<br><br>
+<h5><b>Офисы</b></h5>
+<p>{{ company.mainnew|default:""|safe|linebreaksbr }}</p>
+
+    </p>
+    <p></p><br><br>
+<h5><b>Услуги</b></h5>
+    <div class="row">
+        <div class="col-md-7">
+            {% if company.rubrics %}
+                <div class="tags">
+                    {% for tag in company.rubrics.all %}
+                            <div>• {{ tag }}</div>
+                    {% endfor %}
+                </div><br><br>
+            {% endif %}
+        </div>
+    </div>
+<h5><b>Контакты</b> </h5>
+{% if company.contact_groups_contacts1_text1 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts1_text1 }}">{{ company.contact_groups_contacts1_text1 }}</a></p>{% endif %}
+{% if company.contact_groups_contacts1_text2 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts1_text2 }}">{{ company.contact_groups_contacts1_text2 }}</a></p>{% endif %}
+{% if company.contact_groups_contacts1_text3 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts1_text3 }}">{{ company.contact_groups_contacts1_text3 }}</a></p>{% endif %}
+{% if company.contact_groups_contacts2_text1 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts2_text1 }}">{{ company.contact_groups_contacts2_text1 }}</a></p>{% endif %}
+{% if company.contact_groups_contacts2_text2 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts2_text2 }}">{{ company.contact_groups_contacts2_text2 }}</a></p>{% endif %}
+{% if company.contact_groups_contacts2_text3 %}<p><a target="_blank" rel="nofollow" href="{{ company.contact_groups_contacts2_text3 }}">{{ company.contact_groups_contacts2_text3 }}</a></p>{% endif %}
+
+{% if company.ads_article %}<p>{{ company.ads_article }}</p>{% endif %}
+{% if company.article_warning %}<p>{{ company.article_warning }}</p>{% endif %}<br><br>
+
+    <h3>Отзывы</h3><br>
+
+    {% for comment in comments %}
+    <div class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <p><strong>{{ comment.name }}</strong> оставил {{ comment.created_at|date:"M d, Y" }}</p>
+        <p>{{ comment.content }}</p>
+
+        {% if comment.is_positive %}
+            <p style="color: blue;">Рекомендую</p>
+        {% else %}
+            <p style="color: red;">Не рекомендую</p>
+        {% endif %}
+    </div><br>
+    {% empty %}
+        <p>Еще нет отзывов</p>
+    {% endfor %}<br><br>
+
+    <h3>Оставить отзыв</h3><br>
+    <form method="post" action="{% url 'add_comment' company.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="company_id" value="{{ company.id }}">
+
+    <div class="form-group">
+        <label for="na">Имя</label>
+        <input type="text" class="form-control" id="na" name="na">
+    </div>
+    <div class="form-group">
+        <label for="re">Отзыв</label>
+        <textarea class="form-control" id="re" name="re" required></textarea>
+    </div>
+
+    <div class="form-check">
+        <input type="radio" class="form-check-input" id="positive" name="feedback_type" value="positive" required>
+        <label class="form-check-label" for="positive">Рекомендую</label>
+    </div>
+    <div class="form-check">
+        <input type="radio" class="form-check-input" id="negative" name="feedback_type" value="negative" required checked>
+        <label class="form-check-label" for="negative">Не рекомендую</label>
+    </div>
+
+    <!-- Невидимое поле для ботов -->
+    <div style="display:none;">
+        <label for="fake_field">Не заполнять</label>
+        <input type="text" id="fake_field" name="name">
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-outline-secondary">Отправить</button>
+</form>
+<br><br><br><br>
+
+
+    <div class="row">
+<div style="text-align: center;"><br>
+        <h6><b>Все о {{ company.org_name3 }} «{{ company.org_name1 }}»</b></h6><br>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">График доходов</a>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Видеокамеры</a>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Прайсы</a>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Фото</a>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">О владельце</a>
+            <a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Чат с компанией <span style="color: green;" class="icon-link" href="{% url 'test' %}">(online)</span></a>
+<br><br>
+<!--    <a style="color: red;" class="icon-link" href="{% url 'test' %}">Редактировать</a>-->
+</div></div>
+
+
+            </div>
+        </div>
+    <div class="col-md-5">
+    <div class="row">
+        <h6><b>Больше о «{{ company.org_name1 }}»</b><br><br><br></h6>
+            <UL>
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">График доходов</a></li><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Видеокамеры офиса</a></li><br><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Прайсы и цены</a></li><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Фотогалерея</a></li><br><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Отзывы клиентов</a></li><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Отзывы сотрудников</a></li><br><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">О владельце</a></li><br>-->
+<!--            <li><a class="btn btn-light btn-sm mb-1" href="{% url 'test' %}">Чат с компанией <span style="color: green;" class="icon-link" href="{% url 'test' %}">(online)</span></a></li></UL>-->
+    </div>
+    </div>
+    </div>
+</div>
+</div><br><br><br><br>
+
+{% endblock %}

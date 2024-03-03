@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+<title>{% block title %}Отзывы о компаниях — {{ rubric.name }}{% endblock %}</title>
+{% block content %}
+
+<div class="container"><br><br>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="main-content">
+                <a class="icon-link" href="{% url 'index' %}">&larr; Каталог компаний</a>
+                <h3 class="p-4 mb-3 bg-body-tertiary rounded">{{ rubric.name }}</h3><br>
+                {% for company in companies %}
+                    <a href="{% url 'company_detail' slug=company.slug %}">{{ company.org_name1 }}</a>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div><br><br><br><br>
+
+{% endblock %}

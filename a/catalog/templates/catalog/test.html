@@ -1,0 +1,26 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container"><br><br>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="main-content">
+                <h1 class="p-4 mb-3 bg-body-tertiary rounded">{{ count }}</h1><br>
+                {% for i in find %}
+                <a href="{% url 'company_detail2' i.id %}">{{ i }}</a><br>
+                {% endfor %}<br><br><br><br><br></p>
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+

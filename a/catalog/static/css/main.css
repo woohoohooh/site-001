@@ -1,0 +1,193 @@
+.advantages-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.advantage-column {
+    flex: 1 1 30%;
+    margin: 10px;
+}
+
+.advantage-column h2 {
+    margin-bottom: 10px;
+}
+
+.advantage-column form,
+.advantage-column ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.advantage-column textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.advantage-column button {
+    display: block;
+    margin-top: 10px;
+}
+
+.advantage-column ul li {
+    margin-bottom: 5px;
+}
+
+.criteria {
+    display: flex;
+    justify-content: space-between;
+}
+
+.criteria-row {
+    display: flex;
+}
+
+.criteria-item {
+    flex: 1;
+    text-align: center;
+}
+
+.criteria-name {
+    font-weight: bold;
+}
+
+.criteria-score {
+    margin-top: 5px;
+}
+
+.criteria-table {
+    width: 100%;
+}
+
+.criteria-table th,
+.criteria-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.criteria-table th {
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropbtn:hover .dropdown-content {
+  display: block;
+
+}
+/* Остальной CSS код... */
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Остальной CSS код... */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu-link.active {
+    font-weight: bold;
+}
+
+.menu-link.active {
+    font-weight: bold;
+}
+
+.nav-active {
+    font-weight: bold;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.spacer {
+        margin-right: 20px; /* Установите желаемую ширину отступа здесь */
+    }
